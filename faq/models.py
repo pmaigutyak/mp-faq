@@ -2,8 +2,10 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from ordered_model.models import OrderedModel
 
-class Question(models.Model):
+
+class Question(OrderedModel):
 
     question = models.CharField(_('Question'), max_length=255, unique=True)
 
@@ -12,6 +14,6 @@ class Question(models.Model):
     def __unicode__(self):
         return self.question
 
-    class Meta:
+    class Meta(OrderedModel.Meta):
         verbose_name = _("Frequent asked question")
         verbose_name_plural = _("Frequently asked questions")
