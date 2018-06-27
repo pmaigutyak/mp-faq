@@ -11,7 +11,7 @@ class Question(OrderedModel):
 
     answer = models.TextField(_('Answer'), max_length=10000)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.question
 
     class Meta(OrderedModel.Meta):

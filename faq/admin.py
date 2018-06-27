@@ -1,15 +1,24 @@
 
+from importlib import import_module
+
 from django.apps import apps
 from django.db import models
 from django.contrib import admin
 
-from modeltranslation.admin import TranslationAdmin
 from ordered_model.admin import OrderedModelAdmin
 
 from faq.models import Question
 
 
-class QuestionAdmin(TranslationAdmin, OrderedModelAdmin):
+def _get_question_admin_base_class():
+
+    if apps.is_installed('modeltranslation'):
+        return import_module('modeltranslation.admin').TranslationAdmin
+
+    return admin.ModelAdmin
+
+
+class QuestionAdmin(_get_question_admin_base_class(), OrderedModelAdmin):
 
     list_display = ['question', 'move_up_down_links']
 
