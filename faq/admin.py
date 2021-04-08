@@ -37,4 +37,4 @@ class QuestionAdmin(_get_question_admin_base_class(), OrderedModelAdmin):
                 models.TextField: {'widget': CKEditorWidget}
             }
 
-        super(QuestionAdmin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
