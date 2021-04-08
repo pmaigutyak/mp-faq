@@ -18,6 +18,7 @@ def _get_question_admin_base_class():
     return admin.ModelAdmin
 
 
+@admin.register(Question)
 class QuestionAdmin(_get_question_admin_base_class(), OrderedModelAdmin):
 
     list_display = ['question', 'move_up_down_links']
@@ -37,6 +38,3 @@ class QuestionAdmin(_get_question_admin_base_class(), OrderedModelAdmin):
             }
 
         super(QuestionAdmin, self).__init__(*args, **kwargs)
-
-
-admin.site.register(Question, QuestionAdmin)

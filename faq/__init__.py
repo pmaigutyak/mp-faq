@@ -8,5 +8,3 @@ class FAQConfig(AppConfig):
 
 
 default_app_config = 'faq.FAQConfig'
-
-__version__ = '1.3'

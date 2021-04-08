@@ -1,0 +1,26 @@
+
+{% extends 'flatpages/default.html' %}
+
+{% load i18n faq %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    {% get_faq_questions as faq_questions %}
+
+
+    <div class="container">
+
+        <div class="panel-group" id="accordion">
+
+            {% for question in faq_questions %}
+                <h3>{{ question.question }}</h3>
+                {{ question.answer|safe }}
+                <div class="clearfix"></div>
+                <hr>
+            {% endfor %}
+
+        </div>
+    </div>
+{% endblock %}
